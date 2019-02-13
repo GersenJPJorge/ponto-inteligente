@@ -8,7 +8,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-@ActiveProfiles("test")
+@ActiveProfiles("test") // ira aplicar o que está em application-test.properties, que está acessando o H2
 public class PontoInteligenteApplicationTests {
 
 	@Test
