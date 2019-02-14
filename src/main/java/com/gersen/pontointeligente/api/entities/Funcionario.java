@@ -48,7 +48,7 @@ public class Funcionario implements Serializable {
 	}
 
 	@Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
 	public Long getId() {
 		return id;
 	}
@@ -89,7 +89,8 @@ public class Funcionario implements Serializable {
 		return valorHora;
 	}
 	
-	@Transient
+	@Transient // para retornar um valor no formato optional
+	           // nçao impacta o banco de dados e é ignorado pelo jpa
 	public Optional<BigDecimal> getValorHoraOpt() {
 		return Optional.ofNullable(valorHora);
 	}
