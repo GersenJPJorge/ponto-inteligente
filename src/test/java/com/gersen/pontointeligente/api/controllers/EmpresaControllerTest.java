@@ -29,6 +29,7 @@ import com.gersen.pontointeligente.api.services.EmpresaService;
 @AutoConfigureMockMvc // anotação para contexto web
 @ActiveProfiles("test")
 public class EmpresaControllerTest {
+	
 
 	@Autowired
 	private MockMvc mvc; // container web, indicado acima, no contexto web
