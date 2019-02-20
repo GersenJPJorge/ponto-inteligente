@@ -11,7 +11,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
-import com.gersen.pontointeligente.api.entities.Funcionario;
 import com.gersen.pontointeligente.api.entities.Lancamento;
 import com.gersen.pontointeligente.api.repositories.LancamentoRepository;
 import com.gersen.pontointeligente.api.services.LancamentoService;
@@ -29,14 +28,15 @@ public class LancamentoServiceImpl implements LancamentoService {
 		return this.lancamentoRepository.findByFuncionarioId(funcionarioId, pageRequest);
 	}
 	
-	@Cacheable("lancamentoPorId")
+	@Cacheable("lancamentoPorId") // é o mesmo nome que está no ehcache.xml
 	public Optional<Lancamento> buscarPorId(Long id) {
 		log.info("Buscando um lançamento pelo ID {}", id);
 //		return Optional.ofNullable(this.lancamentoRepository.findById(id));
 		  return this.lancamentoRepository.findById(id);
 	}
 	
-	@CachePut("lancamentoPorId")
+	@CachePut("lancamentoPorId") // quando houver alguma alteração na consulta do lançamento, haverá uma substituição 
+	                             // cache anterior, por esse,e assim  sucessivamente, sempre que houver uma alteração.
 	public Lancamento persistir(Lancamento lancamento) {
 		log.info("Persistindo o lançamento: {}", lancamento);
 		// não precisa do optional porque no "persistir" sempre terá um lançamento.

@@ -1,0 +1,11 @@
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" // header padrão do ehcache
+	xsi:noNamespaceSchemaLocation="ehcache.xsd">
+	<cache name="lancamentoPorId" 
+		maxEntriesLocalHeap="200"
+		timeToLiveSeconds="3600"> // por uma hora os lançamentos ficarão em cache
+	</cache>
+</ehcache>
+
+
+// arquivo responsávelpor hablitar o cache no spring boot
+// se nçao for assim o spring irá usar o cache de memória, que nçao é tão eficiente quanto o ehcache
