@@ -18,24 +18,6 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import com.gersen.pontointeligente.api.security.JwtAuthenticationEntryPoint;
 import com.gersen.pontointeligente.api.security.filters.JwtAuthenticationTokenFilter;
 
-//package com.gersen.pontointeligente.api.security.config;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.context.annotation.Bean;
-//import org.springframework.context.annotation.Configuration;
-//import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-//import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
-//import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-//import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-//import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-//import org.springframework.security.config.http.SessionCreationPolicy;
-//import org.springframework.security.core.userdetails.UserDetailsService;
-//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-//import org.springframework.security.crypto.password.PasswordEncoder;
-//import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-
-//import com.gersen.pontointeligente.api.security.JwtAuthenticationEntryPoint;
-//import com.gersen.pontointeligente.api.security.filters.JwtAuthenticationTokenFilter;
-
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
@@ -52,11 +34,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		authenticationManagerBuilder.userDetailsService(this.userDetailsService).passwordEncoder(passwordEncoder());
 	}
 
+//	@Bean(name = BeanIds.AUTHENTICATION_MANAGER) // estava dando conflito por causa da versão do spring, então
+//	                                              o Marcio Casale sugeriu essa implementação
 	@Bean(name = BeanIds.AUTHENTICATION_MANAGER)
 	@Override
 	public AuthenticationManager authenticationManagerBean() throws Exception {
-		return super.authenticationManagerBean();
+	return super.authenticationManagerBean();
 	}
+
 	
 	
 	@Bean
